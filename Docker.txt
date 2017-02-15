@@ -1,0 +1,104 @@
+
+************ Basic ************
+1. docker run hello-world (-i -> make container interactive  -t -> calls a terminal from inside the container  -d ->  detach mode)
+docker run —name container-name image-name
+
+2. docker ps -a (show all containers)
+3. docker ps (show running containers)
+4. docker images (show list of local images)
+5. docker pull image (pull image from hub.docker.com)
+6. docker tag 542f5f4f1(imageID) anandk/docker-whale:latest
+7. docker login
+8. docker push anandk/docker-whale:latest
+9. docker rmi -f image-Id/image-name
+10. docker rm container-id
+11. docker attach container-name/container-id
+12. docker stop container-id
+13. docker inspect image-id (return low level information on docker object)
+14. docker run -v /Users/anand/Desktop/<path>:/<container path>
+15. docker-machine ip
+
+
+
+************ DockerFile ************https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/
+1. docker build . (build command that uses the current directory as context)
+2. docker build  /path/to/a/docker-folder (build command that uses given directory as context)
+3. docker build -f /path/to/a/docker-file (build command that uses given docker file to build image)
+4. docker build -t anandk/myapp . (specify a repository and tag)
+5. docker build -t anandk/myapp:1.0.2 -t anandk/myapp:latest .
+
+6. FROM
+FROM <image> / FROM <image>:<tag> / FROM <image>@<digest>
+
+7. RUN :- has 2 forms [ RUN actually runs a command and commit the result OR is an image build step]
+RUN<command> [shell form -> the command is run in a shell, by-default is /bin/sh -c on linux or cmd /S/C on windows]
+RUN [“executable”, “param1”, “param2”] [exec form]
+. RUN [“/bin/bash”, “-c”, “echo hello”]
+
+8. CMD :- has 3 forms [is the command the container runs by default when you launch the built image]
+CMD [“executable”, “param1”, “param2”] [exec form, this is the preferred form]
+CMD [“param1”, “param2”] [as default parameters to ENTRYPOINT]
+CMD command param1 param2 [shell form]
+
+9. LABEL :- LABEL instruction ads metadata to an image, A LABEL is a key-value pair
+. LABEL “com.example.vender”=“apple”
+LABEL version:=“1.0”
+LABEL description=“Description goes here”
+. LABEL “com.example.vender”=“apple” version=“1.0” description=“description goes here”
+. LABEL “com.example.vender”=“apple” \
+version=“1.0” \
+description=“description goes here”
+maintainer “anand@gmail.com”
+
+10. EXPOSE :- [informs that the container listens on the specifies network port at runtime]
+. EXPOSE 8080
+
+11. ENV :- [value will be in the environment and can be used in Dockerfile] [2 forms]
+. ENV myName=“john Deo” myDogName=Rex\ the\ dog \
+myCatName=fluffy
+. ENV myName john Deo
+ENV myDogName Rex the dog
+ENV myCatName fluffy
+
+12. ADD :- [copies new files, directories or remote file URLs from <src> and adds them to the filesystem of the image at the path <dest>]
+. ADD source/path destination/path
+
+13. COPY :- [copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>]
+. COPY source/path destination/path
+
+14. ENTRYPOINT :- [ allows you to configure a container that will run as an executable] [has 2 forms]
+. ENTRYPOINT [“executable”, “param1”, “param2”] [exec form, preferred]
+. ENTRYPOINT command param1 param2
+Default entry point is /bin/sh -c
+docker run -i -t —rm -p 80:80 nginx (here is default entry point)
+
+15. VOLUME ??
+16. USER ??
+17. WORKDIR ??
+18. ONBUILD ?? -> instructions the parent Dockerfile gives to the child Dockerfile
+
+
+
+
+
+
+
+
+0. docker create volume && docker volume containers
+1. docker swarm
+2. docker compose
+3. docker networking
+4. docker machine
+5. dockignore file
+********** Create own base image ***********
+
+
+********* Docker networking **********
+
+
+
+
+
+
+
+https://docs.docker.com
