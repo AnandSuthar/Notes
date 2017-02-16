@@ -1,0 +1,4 @@
+1. ip addr show
+2. there are two ip -> i.) internal ip ii.) external ip
+3. hostname -I -> give you just ip addr
+4.

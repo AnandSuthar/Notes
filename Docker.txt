@@ -1,5 +1,8 @@
 
-************ Basic ************
+
+
+            ************ Basic ************
+
 1. docker run hello-world (-i -> make container interactive  -t -> calls a terminal from inside the container  -d ->  detach mode)
 docker run —name container-name image-name
 
@@ -15,12 +18,23 @@ docker run —name container-name image-name
 11. docker attach container-name/container-id
 12. docker stop container-id
 13. docker inspect image-id (return low level information on docker object)
+14. docker inspect —format=‘’ containerid
 14. docker run -v /Users/anand/Desktop/<path>:/<container path>
 15. docker-machine ip
 
+************************************************************************************************************************
 
 
-************ DockerFile ************https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/
+
+
+
+
+
+
+            ************ DockerFile ************
+
+(https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)
+
 1. docker build . (build command that uses the current directory as context)
 2. docker build  /path/to/a/docker-folder (build command that uses given directory as context)
 3. docker build -f /path/to/a/docker-file (build command that uses given docker file to build image)
@@ -78,10 +92,61 @@ docker run -i -t —rm -p 80:80 nginx (here is default entry point)
 18. ONBUILD ?? -> instructions the parent Dockerfile gives to the child Dockerfile
 
 
+************************************************************************************************************************
 
 
 
 
+
+
+
+
+
+
+
+            ************ Docker Container Networking************
+
+1. docker network ls
+3. docker network rm networkid/name
+2. docker network inspect network-name
+4. docker network create —-driver bridge isolated_nw
+   docker network create -d bridge —subnet 144.55.2.8/88 isolated_nw
+   docker network create -o “com.docker.network.bridge.host_binding_ipv4”=“148.58.5.7” isolated_nw
+
+5. docker run -itd --network anand_nw ubuntu:16.04 (run image with network)
+   docker run —network=isolated_nw —ip=154.25.2.6 -itd anandk/ubuntu:16.04
+   (https://docs.docker.com/engine/reference/commandline/network_connect/)
+
+6. docker network disconnect isolated_nw container-name/id
+
+
+. docker _gwbridge network -> .when you initialise of join a swarm, when one of container’s network can provide external connectivity docker connect to the docker _gqbridge network.
+. Then ‘docker _gqbridge’ network is always present when you use overlay networks. 
+. ifconfig -> investigate container configuration
+. cat /etc/hosts -> to check container’s network configuration
+
+************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+            ************ compose-file.yml/yaml ************
+
+https://docs.docker.com/compose/compose-file/
+
+
+************************************************************************************************************************
+
+
+
+
+Note: We can detach from the container and leave it running with CTRL-p CTRL-q
 
 
 0. docker create volume && docker volume containers
@@ -90,15 +155,8 @@ docker run -i -t —rm -p 80:80 nginx (here is default entry point)
 3. docker networking
 4. docker machine
 5. dockignore file
-********** Create own base image ***********
-
-
-********* Docker networking **********
-
+6. docker-training moduels
+7. BACKUPS
 
 
 
-
-
-
-https://docs.docker.com
