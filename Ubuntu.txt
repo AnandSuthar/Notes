@@ -2,3 +2,10 @@
 2. there are two ip -> i.) internal ip ii.) external ip
 3. hostname -I -> give you just ip addr
 4.
+
+
+
+
+Ping utils
+1. apt-get update
+2. apt-get install iputils-ping

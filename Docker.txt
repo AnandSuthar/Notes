@@ -2,7 +2,7 @@
 
 
             ************ Basic ************
-
+(http://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-via-repository)
 1. docker run hello-world (-i -> make container interactive  -t -> calls a terminal from inside the container  -d ->  detach mode)
 docker run —name container-name image-name
 
@@ -15,12 +15,15 @@ docker run —name container-name image-name
 8. docker push anandk/docker-whale:latest
 9. docker rmi -f image-Id/image-name
 10. docker rm container-id
+    docker rm -f container1-id container2-id container3-d & so on
 11. docker attach container-name/container-id
 12. docker stop container-id
 13. docker inspect image-id (return low level information on docker object)
 14. docker inspect —format=‘’ containerid
 14. docker run -v /Users/anand/Desktop/<path>:/<container path>
 15. docker-machine ip
+16. docker port container-name/id
+
 
 ************************************************************************************************************************
 
@@ -136,9 +139,107 @@ docker run -i -t —rm -p 80:80 nginx (here is default entry point)
 
 
 
-            ************ compose-file.yml/yaml ************
 
-https://docs.docker.com/compose/compose-file/
+
+
+
+
+
+
+
+
+
+
+
+            ************ compose-file.yml/yaml ************ (https://docs.docker.com/compose/compose-file/)
+
+0. docker-compose up
+0. docekr-compose ps
+0. docker-compose -f /path/to/docker-composefile/ up
+0. docker-compose up -d
+
+
+
+1. build
+    . build ./path/to/directory-context
+    . build:
+        context: ./path/to/directory
+        dockerfile: Dockerfile-alternet
+        arge:
+            buildno: 1
+            password: secret
+        image: hello-world:latest (after build this will be the name of image)
+
+2. command (overrfide default command)
+    . command: bundle exec thin -p 3000
+3. container_name
+    . container_name: my-web-container
+4. update_config
+    . update_config:
+        delay: 10s
+    . parallelism (number of containers to update at a time)
+    . delay (time to wait between updating a group of containers)
+    . failur_action (what to do if an update fails. continue/pause[default])
+    . monitor (duration after each task update to monitor for failure (ns|us|ms|s|m|h) [default 0s]
+    . max_failure_ratio (failure rate to rolerate during an update)
+5. restart_policy  [this only takes effect when deploying to a swarm]
+    . restart_policy:
+        condition: on-failure | none | any[default]
+        delay: 5s
+        max_attempts: 3
+        window: 120s [default: decide immediately]
+6. depends_on
+    web:
+        depends_on:
+            - db
+            - redis
+    redis:
+        image: redis
+    db:
+        image: mysql
+7. entrypoint (override the default entrypoint)
+    entrypoint: /code/entrypoint.sh
+8.env_file (key value format : VAR=VAL)
+    . env_file: .env
+    . env_file:
+    - ./path/to/env_file
+    - ./path2/to/env_file
+9. expose (can only be accessible to linked services)
+    . expose:
+        - "3000"
+        - "8000"
+10. healthcheck:
+    . healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost"]
+        interval: 1m30s
+        timeout: 10s
+        retries: 3
+    . healthcheck:
+        disable: true
+11. image: (specify the image to start the container from)
+    . image: ubuntu:16.04
+12. links
+    . links:
+        - db
+        - redis
+13. logging
+    . logging:
+        driver: syslog | json-file | none
+        options:
+            syslog-address: "tcp://192.168.12.25:124"
+14. pid (this turns sharing between containers)
+    .pid:"host"
+15. volumes (mount paths)
+    . volumes:
+        - .hostmachine/path:container/path
+16. tty: true
+17. ports
+    . ports:
+        - "8000:8000"
+
+
+
+
 
 
 ************************************************************************************************************************
@@ -146,17 +247,63 @@ https://docs.docker.com/compose/compose-file/
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            ************ Swarm mode -> cluster management ************
+
+
+
+
+************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Note: We can detach from the container and leave it running with CTRL-p CTRL-q
 
 
-0. docker create volume && docker volume containers
-1. docker swarm
+1. docker create volume && docker volume containers
 2. docker compose
-3. docker networking
-4. docker machine
-5. dockignore file
-6. docker-training moduels
-7. BACKUPS
+3. docker machine
+4. dockignore file
+5. docker-training moduels
+6. BACKUPS
+7. Healthcheck
+8. docker swarm
 
 
 
