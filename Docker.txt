@@ -6,6 +6,7 @@
 1. docker run hello-world (-i -> make container interactive  -t -> calls a terminal from inside the container  -d ->  detach mode)
 docker run —name container-name image-name
 
+
 2. docker ps -a (show all containers)
 3. docker ps (show running containers)
 4. docker images (show list of local images)
@@ -20,9 +21,10 @@ docker run —name container-name image-name
 12. docker stop container-id
 13. docker inspect image-id (return low level information on docker object)
 14. docker inspect —format=‘’ containerid
-14. docker run -v /Users/anand/Desktop/<path>:/<container path>
+14. docker run -v /Users/anand/Desktop/<path>:/<container path>:ro [ro-> read-only, default is dual read-write mode]
 15. docker-machine ip
 16. docker port container-name/id
+17. docker log containerId
 
 
 ************************************************************************************************************************
