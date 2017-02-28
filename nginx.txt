@@ -1,0 +1,47 @@
+http://nginx.org/en/docs/beginners_guide.html
+
+1. default name -> nginx.conf
+	. /usr/local/nginx/conf
+	. /etc/nginx
+	. /usr/local/etc/nginx
+
+2. nginx -s singnal
+	. stop > fast shutdown
+	. quit > graceful shutdown
+	. reload > reloading the configuration file
+	. reopen > reopening the log file
+
+3. nginx consists of modules which are controller by directives
+	. simple directives (consists of the name and parameters separated by spaces and ends with a semicolon)
+	. block directives (same as simple directive, instead of the semicolon it ends with a set of additional instructions. can have other directives inside braces called context)
+
+4. Serving static content
+	server {
+	   location / {
+		root /data/www;
+	    }
+	
+	    location /images/ {
+		root /data;
+	    }
+	}
+
+	. req > http://localhost/images/example.png > /data/images/example.png
+	. req > http://localhost/some/example.html > /data/www/some/example.html
+
+5. If not working then check access.log && error.log
+	. /usr/local/nginx/logs
+	. /var/log/nginx
+
+6. Settings up a simple proxy server
+	server {
+	   location / {
+		proxy_pass http://localhost:8080/;
+	    }
+
+	    location ~ \.(gif|jpg|png)$ {
+		root /data/images;
+	    }
+	}
+
+7. 
