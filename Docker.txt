@@ -204,7 +204,7 @@ docker run -i -t —rm -p 80:80 nginx (here is default entry point)
         image: mysql
 7. entrypoint (override the default entrypoint)
     entrypoint: /code/entrypoint.sh
-8.env_file (key value format : VAR=VAL)
+8. env_file (key value format : VAR=VAL)
     . env_file: .env
     . env_file:
     - ./path/to/env_file
@@ -241,6 +241,11 @@ docker run -i -t —rm -p 80:80 nginx (here is default entry point)
 17. ports
     . ports:
         - "8000:8000"
+
+18. environment
+    . environment:
+	key: “it’s value”
+	
 
 
 
