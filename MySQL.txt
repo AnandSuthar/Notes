@@ -44,3 +44,29 @@ mysql.server start
 
 http://stackoverflow.com/questions/7739645/install-mysql-on-ubuntu-without-password-prompt
 **************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+************************ some commands **********************
+1. get repeat count from a colums
+	select fruit1, count(*) as count from s_detail group by fruit1;
+
+2. Create table
+	CREATE TABLE s_info( s_id INT NOT NULL AUTO_INCREMENT, s_name VARCHAR(100) NOT NULL, fruit1 VARCHAR(100), fruit2 VARCHAR(100), rs INT, PRIMARY KEY ( s_id ));
+
+
+
+
+select fruit, count(*) from ((select fruit1 fruit1 as fruit from s_info) union all (select fruit2 as fruit from s_info)) i group by fruit;
+select fruit, count(*) from ((select fruit1 as fruit from s_info) union all       (select fruit2 as fruit from s_info)      ) i group by fruit;
+
+

@@ -1,0 +1,41 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red0\green0\blue0;\red63\green110\blue116;
+\red38\green71\blue75;\red92\green38\blue153;\red196\green26\blue22;\red46\green13\blue110;\red28\green0\blue207;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c66500\c5200\c56900;\csgenericrgb\c0\c0\c0;\csgenericrgb\c24700\c43100\c45600;
+\csgenericrgb\c14900\c27800\c29400;\csgenericrgb\c35900\c14900\c60100;\csgenericrgb\c77000\c10200\c8600;\csgenericrgb\c18100\c5200\c43100;\csgenericrgb\c11000\c0\c81000;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13660\viewh9220\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ****************************************** CRON JOB ***************************************\
+\
+a.) In main.swift\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 	let\cf3  job = \cf4 CronJob\cf3 ()\
+\cf4 	job\cf3 .\cf5 start\cf3 ()\
+\
+b.) in CronJob.swift
+\f0\fs24 \cf0 \CocoaLigature1 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 	import\cf3  Dispatch\
+\cf2 	import\cf3  Foundation\
+\
+\
+\cf2 	class\cf3  CronJob \{\
+	    \cf2 var\cf3  timer: \cf6 DispatchSourceTimer\cf3 ? = \cf2 nil\cf3 \
+\
+	    \cf2 func\cf3  start()\{\
+    		    \cf2 let\cf3  queue = \cf6 DispatchQueue\cf3 (label: \cf7 "com.vapor.app.timer"\cf3 , attributes: .\cf6 concurrent\cf3 )\
+        \
+	        \cf4 timer\cf3  = \cf6 DispatchSource\cf3 .\cf8 makeTimerSource\cf3 (queue: queue)\
+    		    \cf4 timer\cf3 ?.\cf8 scheduleRepeating\cf3 (deadline: .\cf8 now\cf3 (), interval: .\cf8 seconds\cf3 (\cf9 5\cf3 ), leeway: .\cf8 seconds\cf3 (\cf9 1\cf3 ))\
+        		\cf4 timer\cf3 ?.\cf8 setEventHandler\cf3 (handler: \{\
+            		\cf8 print\cf3 (\cf7 "apple"\cf3 )\
+	        \})\
+    		    \cf4 timer\cf3 ?.\cf8 resume\cf3 ()\
+    		\}\
+	\}}
