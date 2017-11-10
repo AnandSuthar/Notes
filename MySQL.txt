@@ -1,5 +1,5 @@
-1. brew install mysql
-2. brew link mysql
+1. brew install mysql. OR   (brew uninstall --force mysql)
+2. brew link mysql.    OR   (brew unlink mysql && brew link mysql)
 3. mysql.sever start
 4. mysql -uroot
 1. mysql -u root -p -> then enter password
@@ -12,6 +12,12 @@
 8. show processlist;
 9. to un-install (https://coderwall.com/p/os6woq/uninstall-all-those-broken-versions-of-mysql-and-re-install-it-with-brew-on-mac-mavericks)
 
+
+
+****************** <mysql/mysql.h> file not found ******************
+1. vapor build --verbose
+2. brew install cmysql
+3. 
 
 
 
