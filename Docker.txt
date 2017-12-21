@@ -1,18 +1,26 @@
 
+https://www.monero.how/tutorial-how-to-mine-monero
+https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
+
+Other commands
+0. touch filename.ext to create empty file, command line
 
 
             ************ Basic ************
 (http://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-via-repository)
 1. docker run hello-world (-i -> make container interactive  -t -> calls a terminal from inside the container  -d ->  detach mode)
-docker run —name container-name image-name
+   docker run —name container-name image-name 
+   docker run -p 4000:80 imagename
+   Docker run -d -p 4000:80 imageName (detached or background mode)
 
 
 2. docker ps -a (show all containers)
-3. docker ps (show running containers)
+3. docker ps (show running containers).
+   Docker container ls (list of running containers)
 4. docker images (show list of local images)
 5. docker pull image (pull image from hub.docker.com)
 6. docker tag 542f5f4f1(imageID) anandk/docker-whale:latest
-7. docker login
+7. docker login (login-id :- anandk)
 8. docker push anandk/docker-whale:latest
 9. docker rmi -f image-Id/image-name
 10. docker rm container-id
@@ -26,7 +34,7 @@ docker run —name container-name image-name
 16. docker port container-name/id
 17. docker log containerId
 18. docker events& (to get debug logs) + docker logs <copy the instance id from docker event messages on screen>
-
+19. docker —version
 
 
 
