@@ -1,9 +1,5 @@
 
 https://www.monero.how/tutorial-how-to-mine-monero
-https://www.cryptocurrencyfreak.com/2017/08/22/monero-mining-xmr-stak-cpu-ubuntu-16-04/
-https://github.com/fireice-uk/xmr-stak
-
-
 https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands
 
 Other commands
@@ -29,7 +25,7 @@ Other commands
 9. docker rmi -f image-Id/image-name
 10. docker rm container-id
     docker rm -f container1-id container2-id container3-d & so on
-11. docker attach container-name/container-id (Ctrl+q to de attach from running container)
+11. docker attach container-name/container-id
 12. docker stop container-id
 13. docker inspect image-id (return low level information on docker object)
 14. docker inspect —format=‘’ containerid
