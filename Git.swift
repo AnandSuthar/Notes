@@ -14,8 +14,8 @@
 12.git push -d origin branchName (to delete branch from remote)
 13.git reflog  (used to recover deleted branch from local)
 14.git clone -b branchName remoteRepo
-
-
+15.git branch (shows list of branches) -- git branch -a (shows list of hidden branches)
+16.git push --set-upstream origin dev (push new branch wihout any change)
 
 
 
